@@ -34,8 +34,11 @@
       <div class="wrap">
         <div class="content">
           <div class="title">粥品香坊(大运村)</div>
-          <ele-stars></ele-stars>
-
+          <ele-stars class="stars" size="24" ></ele-stars>
+          <ele-line></ele-line>
+          <ele-list></ele-list>
+          <ele-line></ele-line>
+          <p class="text">是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户”</p>
         </div>
       </div>
       <div class="footer">
@@ -46,10 +49,15 @@
 </template>
 
 <script>
-import Stars from "components/stars/Stars.vue"
+import Stars from "components/stars/Stars.vue";
+import Line from "components/line/Line.vue"
+import List from "./list/List"
 export default {
   components:{
-    "ele-stars":Stars
+    "ele-stars":Stars,
+    "ele-line":Line,
+    "ele-list":List
+
   }
 }
 </script>
@@ -186,7 +194,7 @@ export default {
       height 100%
   .mask
     position fixed
-    display none
+
     top 0
     left 0
     right 0
@@ -206,12 +214,25 @@ export default {
           font-size 16px
           font-weight 700
           color rgba(255,255,255,1)
+        .stars
+          margin-top 16px
+          margin-bottom 28px
+        .text
+          box-sizing border-box
+          text-indent 2em
+          width 80%
+          margin 0 auto 
+          padding 24px 12px
+          font-size 12px
+          font-weight normal
+          text-align left
+          color rgba(255,255,255,1)
+          line-height 24px
     .footer
       height 32px
       padding-top 32px
       padding-bottom 32px
       text-align center
-      background #f40
       margin-top -96px
       .close
         font-size 32px
