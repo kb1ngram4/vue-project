@@ -33,8 +33,9 @@
     <div class="mask">
       <div class="wrap">
         <div class="content">
-          
-          
+          <div class="title">粥品香坊(大运村)</div>
+          <ele-stars></ele-stars>
+
         </div>
       </div>
       <div class="footer">
@@ -43,12 +44,17 @@
     </div>
   </div>
 </template>
+
 <script>
+import Stars from "components/stars/Stars.vue"
 export default {
+  components:{
+    "ele-stars":Stars
+  }
 }
 </script>
 <style lang="stylus" scoped>
-@import "../common/stylus/mixin.stylus";
+@import "../../common/stylus/mixin.stylus";
 .header
   position relative
   font-size 0px
@@ -180,6 +186,7 @@ export default {
       height 100%
   .mask
     position fixed
+    display none
     top 0
     left 0
     right 0
@@ -192,7 +199,13 @@ export default {
     .wrap
       min-height 100%
       .content
+        text-align center
+        padding-top 64px
         padding-bottom 96px
+        .title
+          font-size 16px
+          font-weight 700
+          color rgba(255,255,255,1)
     .footer
       height 32px
       padding-top 32px
