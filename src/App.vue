@@ -3,7 +3,7 @@
     <v-header></v-header>
     <div class="nav" >
       <div class="item" >
-        <router-link to= "/goods" class="active">商品</router-link>
+        <router-link to= "/goods">商品</router-link>
       </div>
       <div class="item">
         <router-link to="/ratings">评价</router-link>
@@ -28,8 +28,11 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import "./common/stylus/mixin.stylus"
 #app
   .nav
+    one-px(rgba(7,17,27,0.1))
+    position relative
     display flex
     height 40px
     line-height 40px
@@ -42,5 +45,14 @@ export default {
         color rgba(77,85,93,1)
         &.active
           color rgba(240,20,20,1)
+    
+
+    
+
+
+
+
+
+
 
 </style>
