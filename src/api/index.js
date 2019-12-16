@@ -1,4 +1,4 @@
-import userApi from "./users";
+import shopApi from "./shop";
 export default {
-  users:userApi
+  shop:shopApi
 }

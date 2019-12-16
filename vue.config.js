@@ -4,7 +4,7 @@ function resolve (dir) {
 }
 module.exports = {
   devServer:{
-    port:4000,
+    // port:4000,
     open:true
   },
   lintOnSave:false,

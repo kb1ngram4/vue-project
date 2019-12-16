@@ -21,6 +21,12 @@ import Header from './components/ele-header/Header'
 
 export default {
   name: 'app',
+  async mounted(){
+    const data = await this.$http.shop.getSellers()
+    console.log(data);
+    
+    
+  },
   components: {
     "v-header":Header
   }
