@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header></v-header>
+    <v-header :seller="seller" ></v-header>
     <div class="nav" >
       <div class="item" >
         <router-link to= "/goods">商品</router-link>
@@ -18,14 +18,19 @@
 
 <script>
 import Header from './components/ele-header/Header'
-
+const ok = 0
 export default {
   name: 'app',
+  data(){
+    return {
+      seller:{}
+    }
+  },
   async mounted(){
     const data = await this.$http.shop.getSellers()
-    console.log(data);
-    
-    
+    if(data.errno===ok){
+      this.seller = data.body
+    }
   },
   components: {
     "v-header":Header

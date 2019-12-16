@@ -3,7 +3,7 @@
     "name": "嘉禾一品（温都水城）",
     "description": "硅谷专送",
     "deliveryTime": 28,
-    "score": 4.2,
+    "score|0-4.1": 4,
     "serviceScore": 4.1,
     "foodScore": 4.3,
     "rankRate": 69.2,
@@ -72,7 +72,7 @@
   "goods": [
     {
       "name": "优惠",
-      "icon": "https://fuss10.elemecdn.com/b/91/8cf4f67e0e8223931cd595dc932fepng.png",
+      "type": 0,
       "foods": [
         {
           "name": "南瓜粥",
@@ -326,7 +326,7 @@
     },
     {
       "name": "折扣",
-      "icon": "https://fuss10.elemecdn.com/0/6a/05b267f338acfeb8bd682d16e836dpng.png",
+      "type": 1,
       "foods": [
         {
           "name": "娃娃菜炖豆腐",

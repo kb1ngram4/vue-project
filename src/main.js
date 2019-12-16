@@ -4,6 +4,8 @@ import router from './router'
 import http from '@/api'
 import "@/mock"
 import '@/common/stylus/style.styl'
+import '@/common/stylus/transition.stylus'
+
 // import axios from 'axios'
 Vue.config.productionTip = false;
 Vue.prototype.$http = http

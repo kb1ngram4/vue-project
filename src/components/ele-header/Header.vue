@@ -1,50 +1,53 @@
 <template>
   <div class="header">
     <div class="header-top">
-      <img class="avatar" src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" alt="">
+      <img class="avatar" :src="seller.avatar" alt="">
       <div class="content">
         <div class="title">
           <i class="brand"></i>
-          <span class="text">嘉禾一品（温都水城）</span>
+          <span class="text">{{seller.name}}</span>
         </div>
         <div class="des">
-          <span class="text">硅谷专送/38分钟送达</span>
+          <span class="text">{{seller.description}}/{{seller.deliveryTime}}分钟送达</span>
         </div>
-        <div class="supports">
-          <i class="icon decrease"></i>
-          <span class="text">在线支付满25送阿芳，满50送达姆</span>
+        <!-- 得有seller.supports才能显示，不然就报错 -->
+        <div class="supports" v-if="seller.supports" >
+          <ele-icon class="icon" :size="1" :type="seller.supports[0].type" ></ele-icon>
+          <span class="text">{{seller.supports[0].content}}</span>
         </div>
       </div>
       <div class="btn" @click="maskShow=true">
-        <span class="text">5个</span>
+        <span class="text" v-if="seller.supports" >{{seller.supports.length}}个</span>
         <i class="icon icon-keyboard_arrow_right"></i>
       </div>
     </div>
     <div class="bulletin">
       <div class="bulletin-left">
         <i class="icon"></i>
-        <span class="text">是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户”</span>
+        <span class="text">{{seller.bulletin}}</span>
       </div>
       <i class="arrow icon-keyboard_arrow_right"></i>
     </div>
     <div class="bg">
-      <img src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" alt="">
+      <img :src="seller.avatar" alt="">
     </div>
-    <div class="mask" v-show="maskShow">
-      <div class="wrap"  >
-        <div class="content">
-          <div class="title">粥品香坊(大运村)</div>
-          <ele-stars class="stars" size="24" ></ele-stars>
-          <ele-line></ele-line>
-          <ele-list></ele-list>
-          <ele-line></ele-line>
-          <p class="text">是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户”</p>
+    <transition name="mask">
+      <div class="mask" v-show="maskShow">
+        <div class="wrap"  >
+          <div class="content">
+            <div class="title">{{seller.name}}</div>
+            <ele-stars class="stars" size="48" :score="seller.score" ></ele-stars>
+            <ele-line></ele-line>
+            <ele-list :supports="seller.supports" ></ele-list>
+            <ele-line></ele-line>
+            <p class="text">{{seller.bulletin}}</p>
+          </div>
         </div>
+        <div class="footer">
+          <i class="close icon-close" @click="maskShow=false"></i>  
+        </div> 
       </div>
-      <div class="footer">
-        <i class="close icon-close" @click="maskShow=false"></i>  
-      </div> 
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -52,16 +55,21 @@
 import Stars from "components/stars/Stars.vue";
 import Line from "components/line/Line.vue"
 import List from "./list/List"
+import Icon from "components/ele-icon/Icon"
 export default {
+  props:{
+    seller:Object
+  },
   data(){
     return {
-      maskShow:false
+      maskShow:false,
     }
   },
   components:{
     "ele-stars":Stars,
     "ele-line":Line,
-    "ele-list":List
+    "ele-list":List,
+    "ele-icon":Icon
 
   }
 }

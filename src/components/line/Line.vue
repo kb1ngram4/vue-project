@@ -13,7 +13,7 @@ export default {
 
 <style lang="stylus" scoped>
 .line-wrap
-  
+  // height 30px
   width 80%
   display inline-flex
   align-items center
@@ -23,7 +23,12 @@ export default {
     background rgba(255,255,255,.2)
   .text
     font-size 14px
+    font-weight 700
+    font-size 14px
+    line-height 14px
+    color rgba(255,255,255,1)
     margin-left 12px
     margin-right 12px
+    
       
 </style>

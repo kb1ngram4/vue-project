@@ -44,24 +44,9 @@
 
       .supports
         .icon
-          background-size 100% 100%
-          background-repeat no-repeat
           vertical-align middle
-          display inline-block
           margin-bottom 2px
-          margin-right 4px
-          width 12px
-          height 12px
-          &.decrease
-            bg-img(decrease_1)
-          &.discount
-            bg-img(discount_1)
-          &.guarantee
-            bg-img(guarantee_1)
-          &.invoice
-            bg-img(invoice_1)
-          &.special
-            bg-img(special_1)  
+          margin-right 4px   
         .text
           vertical-align middle
 
@@ -154,10 +139,10 @@
           margin-bottom 28px
         .text
           box-sizing border-box
-          text-indent 2em
           width 80%
-          margin 0 auto 
-          padding 24px 12px
+          margin 0 auto
+          margin-top 24px 
+          padding 0px 12px
           font-size 12px
           font-weight normal
           text-align left
