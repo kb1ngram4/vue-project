@@ -37,9 +37,11 @@
           <div class="content">
             <div class="title">{{seller.name}}</div>
             <ele-stars class="stars" size="48" :score="seller.score" ></ele-stars>
-            <ele-line></ele-line>
+            <ele-line class="line"></ele-line>
             <ele-list :supports="seller.supports" ></ele-list>
-            <ele-line></ele-line>
+            <ele-line class="line">
+              <span class="line-text">商家公告</span>
+            </ele-line>
             <p class="text">{{seller.bulletin}}</p>
           </div>
         </div>

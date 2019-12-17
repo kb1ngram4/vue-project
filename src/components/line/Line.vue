@@ -1,7 +1,9 @@
 <template>
   <div class="line-wrap">
     <div class="line"></div>
-      <span class="text">优惠信息</span>
+    <slot>
+      <span class="line-text">优惠信息</span>
+    </slot>
     <div class="line"></div>
   </div>
 </template>
@@ -21,7 +23,7 @@ export default {
     flex 1
     height 1px
     background rgba(255,255,255,.2)
-  .text
+  .line-text
     font-size 14px
     font-weight 700
     font-size 14px

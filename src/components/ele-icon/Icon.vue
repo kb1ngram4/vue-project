@@ -4,7 +4,7 @@
 <script>
 export default {
   props:{
-    size:String,
+    size:Number,
     type:Number
   },
   data(){

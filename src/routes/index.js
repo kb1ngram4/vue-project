@@ -1,4 +1,4 @@
-import Goods from 'pages/Goods.vue';
+import Goods from 'pages/goods/Goods.vue';
 import Ratings from 'pages/Ratings.vue';
 import Seller from 'pages/Seller.vue';
 
