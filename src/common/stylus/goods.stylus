@@ -81,3 +81,8 @@
                   color: rgba(147,153,159,1)
                   line-height 24px
                   font-weight 700
+              .control
+                position absolute
+                right 0
+                bottom 17px 
+                  

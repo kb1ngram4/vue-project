@@ -6,7 +6,8 @@
           class="menu-item"
           v-for="(good,index) in goods"
           :key="good.index"
-          :class="{active:currentIndex === index}">
+          :class="{active:currentIndex === index}"
+          @click="handleForMenu(index)">
           <ele-icon 
             class="icon" 
             :size="3" 
@@ -19,10 +20,10 @@
     </div>
     <div class="foods" ref="foodWrap" >
       <ul class="foods-list" ref="foodList">
-        <li class="foods-item" v-for="good in goods" :key="good.index">
+        <li class="foods-item" v-for="(good,goodIndex) in goods" :key="good.index">
           <h2 class="title">{{good.name}}</h2>
           <ul class="food-list">
-            <li class="food-item" v-for="food in good.foods" :key="food.index">
+            <li class="food-item" v-for="(food,foodIndex) in good.foods" :key="food.index">
               <div class="icon">
                 <img :src="food.icon" alt="">
               </div>
@@ -37,18 +38,35 @@
                     <span class="nowPrice">￥{{food.price}} </span>
                     <span class="oldPrice" v-show="food.oldprice" >￥{{food.oldprice}}</span>
                   </div>
+                  <ele-control 
+                    class="control"
+                    :food="food"
+                    @addCount="addCount"
+                    @removeCount="removeCount"
+                    :goodIndex="goodIndex"
+                    :foodIndex="foodIndex"></ele-control>
               </div>
             </li>
-            
+
           </ul>
         </li>
       </ul>
     </div>
+    <ele-cart 
+      :deliveryPrice="seller.deliveryPrice" 
+      :minPrice="seller.minPrice"
+      :selectedFoods="selectedFoods"
+      @addCount="addCount"
+      @removeCount="removeCount"
+      @clear="clear">
+      </ele-cart>
   </div>
 </template>
 <script>
 import BScroll from "better-scroll"
 import Icon from "@/components/ele-icon/Icon"
+import Control from "@/components/ele-control/Control"
+import Cart from "@/components/ele-cart/Cart"
 const OK = 0
 export default {
   name:"goods",
@@ -64,12 +82,33 @@ export default {
     }
   },
   components:{
-    "ele-icon":Icon
+    "ele-icon":Icon,
+    "ele-control":Control,
+    "ele-cart":Cart
+
   },
   methods:{
+    addCount(food){
+      // let food = this.goods.find((good,index)=>index===goodIndex)
+      //             .foods.find((food,index)=>index===foodIndex)
+      if(!food.count){
+        this.$set(food,"count",1)
+      }else{
+        food.count++
+      }
+    },
+    removeCount(food){
+      // if(!food.count){
+      //   this.$set(food,"count",1)
+      // }
+      food.count--
+    },
     _initScroll(){
-      this.menuScroll =  new BScroll(this.$refs.menuWrap)
+      this.menuScroll =  new BScroll(this.$refs.menuWrap,{
+        click:true
+      })
       this.foodScroll =  new BScroll(this.$refs.foodWrap,{
+          click:true,
           probeType:3
       })
       this.foodScroll.on("scroll",({x,y})=>{
@@ -86,6 +125,15 @@ export default {
           heights.push(height)
       })
       this.heights = heights
+    },
+    handleForMenu(index){
+      const height = this.heights[index]
+      this.foodScroll.scrollTo(0,-height,300)
+    },
+    clear(){
+      this.selectedFoods.forEach((selectedFood)=>{
+        selectedFood.count = 0
+      })
     }
   },
   computed:{
@@ -102,7 +150,20 @@ export default {
         this.menuScroll.scrollToElement(liNode,300)
       }
       return index
+    },
+    //被选中的food
+    selectedFoods(){
+      let selectedFoods = []
+      this.goods.forEach((good)=>{
+        good.foods.forEach((food)=>{
+          if(food.count>0){
+            selectedFoods.push(food)
+          }
+        })
+      })
+      return selectedFoods
     }
+
   },
   async mounted(){
       const {errno,body} = await this.$http.shop.getGoods()

@@ -9,7 +9,7 @@ import '@/common/stylus/transition.stylus'
 // import axios from 'axios'
 Vue.config.productionTip = false;
 Vue.prototype.$http = http
-
+Vue.prototype.bus = new Vue()
 // (async()=>{
 //   const data = axios.get("/api/sellers")
 //   console.log(data.data);

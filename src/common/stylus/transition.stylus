@@ -11,3 +11,42 @@
   transition .5s opacity 
 .mask-leave-to
   opacity 0 
+
+
+//添加按钮滚动动画
+.control-enter
+  opacity 0
+  transform translate3d(48px,0,0) rotate(0deg)
+.control-enter-active
+  transition all 2s
+.control-enter-to
+  opacity 1
+  transform translate3d(0,0,0) rotate(720deg)
+
+.control-leave
+  opacity 1
+  transform translate3d(0,0,0) rotate(0deg) 
+.control-leave-active
+  transition all 2s
+.control-leave-to
+  opacity 0
+  transform translate3d(48px,0,0) rotate(720deg)
+
+
+.shopCartList-enter
+  opacity 0
+  transform translateY(100%)
+.shopCartList-enter-active
+  transition: .5s all linear
+.shopCartList-enter-to
+  opacity 1
+  transform: translateY(0)
+
+.shopCartList-leave
+  opacity 1
+  transform: translateY(0)
+.shopCartList-leave-active
+  transition: .5s all linear
+.shopCartList-leave-to
+  opacity 0
+  transform translateY(100%)

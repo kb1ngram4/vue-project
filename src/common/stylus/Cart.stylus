@@ -1,0 +1,156 @@
+@import "./mixin.stylus"
+.shopCart
+  display flex
+  position fixed
+  z-index 3
+  left 0
+  bottom 0
+  width 100%
+  height 48px
+  background #141d27
+  .cartleft
+    display flex
+    flex 1
+    .logowarp
+      display flex
+      position relative
+      top -10px
+      align-items center
+      justify-content center
+      width 56px
+      height 56px
+      margin-left 12px
+      margin-right 12px
+      border-radius 50%
+      background #141d27
+      &.heightLight
+        .logo
+          background rgba(0,160,220,1)
+          .icon
+            color white
+      .logo
+        display flex
+        align-items center
+        justify-content center
+        width 44px
+        height 44px
+        border-radius 50%
+        background rgba(255,255,255,.2)
+        
+        .icon
+          font-size 24px
+          color rgba(255,255,255,.4)
+          line-height 24px
+      .bubble
+        position absolute
+        top 0
+        right 0
+        font-size 9px
+        line-height 16px
+        text-align center
+        width 24px
+        height 16px
+        background-color red
+        color white
+        border-radius 10px
+    .totalmoney
+      display flex
+      align-items center
+      justify-content center
+      span
+        font-size 16px
+        color rgba(255,255,255,.4)
+        font-weight 700
+        line-height 24px
+        margin 10px 12px 12px 0px
+        &.heightLight
+          color rgba(255,255,255,1)
+    .deliveryPrice
+      display flex
+      align-items center
+      justify-content center
+      border-left 1px solid rgba(255,255,255,.1)
+      margin-right 12px
+      padding-left 12px
+      span
+        font-size 14px
+        color rgba(255,255,255,.4)
+        font-weight 200
+        line-height 20px
+  
+  .cartright
+    display flex
+    align-items center
+    justify-content center
+    background rgba(255,255,255,.2)
+    flex 0 0 105px
+    &.heightLight
+      background green
+      span 
+        color: white
+    span
+      font-size: 16px
+      line-height 24px
+      color:  rgba(255,255,255,.4)
+      font-weight 700
+.list
+    position absolute
+    left 0
+    bottom: 0
+    z-index 2
+    width 100%
+    .header
+      height 40px
+      background #f3f5f7
+      padding 0 18px
+      one-px(rgba(7,17,27,.1))
+      .car
+        float left
+        font-size: 14px
+        line-height 40px
+        color: rgba(7,17,27,1)
+      .clear
+        float right
+        font-size: 12px
+        line-height 40px
+        color rgba(00,160,220,1)
+        
+    .content
+      max-height 218px
+      overflow hidden
+      background rgba(255,255,255,1)
+      ul
+        height 100%
+        li
+          height 48px
+          padding: 12px 18px
+          one-px(rgba(7,17,27,.1))
+          .left
+            float left
+            font-size: 14px
+            color: rgb(7,17,27)
+            line-height 48px
+          .right
+            float right
+            display: flex
+            align-items center
+            line-height 48px
+
+            .money
+              // display inline-block
+              margin-right 12px
+              font-size: 14px
+              font-weight 350
+              color rgba(240,20,20,1)
+              
+.mask
+  position fixed
+  z-index 1
+  left 0
+  top 0
+  width: 100%
+  height 100%
+  background rgba(7,17,27,.6)  
+  backdrop-filter: blur(10px)    
+              
+

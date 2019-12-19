@@ -114,7 +114,6 @@
       height 100%
   .mask
     position fixed
-
     top 0
     left 0
     right 0
@@ -124,6 +123,8 @@
     overflow auto
     font-size 32px
     color white
+    // 背景毛玻璃
+    backdrop-filter blur(10px)
     .wrap
       min-height 100%
       .content
